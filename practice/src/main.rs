@@ -1,10 +1,10 @@
 use std::io;
 
 fn main() {
-    let mut n = set_name();
 
-    println!("{}", n.len());
-
+    let mut m = "this";
+    let x = *m;
+    println!("{}", &String x);
 }
 
 // ask for name
