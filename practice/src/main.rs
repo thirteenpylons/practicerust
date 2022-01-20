@@ -1,35 +1,29 @@
-
-
-pub fn add(a: i32, b: i32) -> i32 {
-    a + b
-}
-
-// This is a really bad adding function, its purpose is to fail in this
-// example.
-#[allow(dead_code)]
-fn bad_add(a: i32, b: i32) -> i32 {
-    a - b
-}
-
-#[cfg(test)]
-mod tests {
-    // Note this useful idiom: importing names from outer (for mod tests) scopre.
-    use super::*;
-
-    #[test]
-    fn test_add() {
-        assert_eq!(add(1, 2), 3);
-    }
-
-    #[test]
-    fn test_bad_add() {
-        // This assert would fire and test will fail
-        // Please note, that private functions can be tested too!
-        assert_eq!(bad_add(1, 2), 3);
-    }
-}
-
+use std::io;
 
 fn main() {
+    let v: Vec<f64> = vec![0.0, 0.707, 1.0, 0.707];
+    let a: [f64; 4] =     [0.0, 0.707, 1.0, 0.707];
+
+    let sv: &[f64] = &v;
+    let sa: &[f64] = &a;
+
+    print(sv);
+    print(sa);
 }
 
+fn print(n: &[f64]) {
+    for elt in n {
+        println!("{}", elt);
+    }
+}
+
+
+// ask for name
+fn set_name() -> io::Result<()> {
+    // gets the name
+    let mut input = String::new();
+
+    io::stdin().read_line(&mut input)?;
+    
+    Ok(())
+}
